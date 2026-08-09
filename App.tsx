@@ -1,33 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import LessonScreen from './screens/LessonScreen';
+import { worldsOfGodIntroLesson } from './content/paths/journeyOfTheSoul';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Bahá'í Micro-Deepening</Text>
-      <Text style={styles.subtitle}>Study, reflect, and apply the Writings</Text>
+    <SafeAreaView style={styles.safeArea}>
+      <LessonScreen lesson={worldsOfGodIntroLesson} />
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 24,
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: '600',
-    textAlign: 'center',
-  },
-  subtitle: {
-    marginTop: 8,
-    fontSize: 15,
-    color: '#666',
-    textAlign: 'center',
   },
 });
