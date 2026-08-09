@@ -1,20 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import LessonScreen from './screens/LessonScreen';
-import { worldsOfGodIntroLesson } from './content/paths/journeyOfTheSoul';
+import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import RootNavigator from './navigation/RootNavigator';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <LessonScreen lesson={worldsOfGodIntroLesson} />
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
       <StatusBar style="auto" />
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});

@@ -1,22 +1,33 @@
 import React, { Fragment, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {
   BlankedQuotation,
   ChoicePrompt,
-  Lesson,
   LessonStep,
   Quotation,
 } from '../content/schema';
+import { getLesson, getNextLessonId } from '../content';
+import { RootStackParamList } from '../navigation/RootNavigator';
 
-interface LessonScreenProps {
-  lesson: Lesson;
-}
+type Props = NativeStackScreenProps<RootStackParamList, 'Lesson'>;
 
-export default function LessonScreen({ lesson }: LessonScreenProps) {
+export default function LessonScreen({ route, navigation }: Props) {
+  const lesson = getLesson(route.params.lessonId);
   const [stepIndex, setStepIndex] = useState(0);
   const [completed, setCompleted] = useState(false);
+
+  if (!lesson) {
+    return (
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.title}>Lesson not found</Text>
+      </ScrollView>
+    );
+  }
+
   const step = lesson.steps[stepIndex];
   const isLastStep = stepIndex === lesson.steps.length - 1;
+  const nextLessonId = getNextLessonId(lesson.pathId, lesson.id);
 
   const goNext = () => {
     if (isLastStep) {
@@ -33,6 +44,14 @@ export default function LessonScreen({ lesson }: LessonScreenProps) {
     setCompleted(false);
   };
 
+  const goToNextLesson = () => {
+    if (nextLessonId) {
+      navigation.replace('Lesson', { lessonId: nextLessonId });
+    }
+  };
+
+  const goToPath = () => navigation.navigate('Path', { pathId: lesson.pathId });
+
   if (completed) {
     return (
       <ScrollView contentContainerStyle={styles.container}>
@@ -42,8 +61,25 @@ export default function LessonScreen({ lesson }: LessonScreenProps) {
           <Text style={styles.keyIdeaLabel}>Today's idea</Text>
           <Text style={styles.keyIdeaText}>{lesson.keyIdea}</Text>
         </View>
-        <Pressable style={styles.primaryButton} onPress={restart}>
-          <Text style={styles.primaryButtonText}>Review Again</Text>
+        {nextLessonId && (
+          <Pressable style={styles.primaryButton} onPress={goToNextLesson}>
+            <Text style={styles.primaryButtonText}>Next Lesson</Text>
+          </Pressable>
+        )}
+        <Pressable
+          style={nextLessonId ? styles.secondaryButtonFull : styles.primaryButton}
+          onPress={goToPath}
+        >
+          <Text
+            style={
+              nextLessonId ? styles.secondaryButtonText : styles.primaryButtonText
+            }
+          >
+            Back to Path
+          </Text>
+        </Pressable>
+        <Pressable style={styles.textButton} onPress={restart}>
+          <Text style={styles.textButtonText}>Review Again</Text>
         </Pressable>
       </ScrollView>
     );
@@ -343,6 +379,8 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 10,
+    alignItems: 'center',
+    marginBottom: 12,
   },
   primaryButtonText: {
     color: '#fff',
@@ -360,6 +398,24 @@ const styles = StyleSheet.create({
     color: '#444',
     fontWeight: '600',
     fontSize: 15,
+  },
+  secondaryButtonFull: {
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  textButton: {
+    alignItems: 'center',
+    paddingVertical: 10,
+  },
+  textButtonText: {
+    color: '#7a5c00',
+    fontWeight: '600',
+    fontSize: 14,
   },
   keyIdeaCard: {
     backgroundColor: '#fbf3df',
