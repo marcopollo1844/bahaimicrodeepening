@@ -1,10 +1,15 @@
-import { journeyOfTheSoulPath, worldsOfGodIntroLesson } from './paths/journeyOfTheSoul';
+import {
+  journeyOfTheSoulPath,
+  worldsOfGodIntroLesson,
+  hahutUnknowableEssenceLesson,
+} from './paths/journeyOfTheSoul';
 import { Lesson, LearningPath } from './schema';
 
 export const paths: LearningPath[] = [journeyOfTheSoulPath];
 
 export const lessons: Record<string, Lesson> = {
   [worldsOfGodIntroLesson.id]: worldsOfGodIntroLesson,
+  [hahutUnknowableEssenceLesson.id]: hahutUnknowableEssenceLesson,
 };
 
 export function getPath(pathId: string): LearningPath | undefined {
