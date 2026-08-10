@@ -7,7 +7,7 @@ export const journeyOfTheSoulPath: LearningPath = {
     "An introduction to Bahá'u'lláh's teaching on the Worlds of God — the " +
     "multi-dimensional nature of reality and the soul's eternal journey " +
     'toward the Divine.',
-  lessonIds: ['worlds-of-god-intro'],
+  lessonIds: ['worlds-of-god-intro', 'hahut-unknowable-essence'],
 };
 
 export const worldsOfGodIntroLesson: Lesson = {
@@ -126,8 +126,144 @@ export const worldsOfGodIntroLesson: Lesson = {
   ],
 };
 
+export const hahutUnknowableEssenceLesson: Lesson = {
+  id: 'hahut-unknowable-essence',
+  pathId: 'journey-of-the-soul',
+  order: 2,
+  title: 'The World of Háhút',
+  subtitle: 'The realm beyond all reach',
+  estimatedMinutes: 6,
+  keyIdea:
+    "God's own Essence is forever unknowable — not because we haven't " +
+    'searched hard enough, but because it lies utterly beyond every ' +
+    'category human minds, or even the Prophets, can reach.',
+  steps: [
+    {
+      type: 'read',
+      title: 'Read',
+      quotation: {
+        text:
+          'To every discerning and illumined heart it is evident that God, ' +
+          'the unknowable Essence, the divine Being, is immensely exalted ' +
+          'beyond every human attribute, such as corporeal existence, ' +
+          'ascent and descent, egress and regress. Far be it from His ' +
+          'glory that human tongue should adequately recount His praise, ' +
+          'or that human heart comprehend His fathomless mystery. No tie ' +
+          'of direct intercourse can possibly bind Him to His creatures. ' +
+          'He standeth exalted beyond and above all separation and ' +
+          'union, all proximity and remoteness. Gracious God! How could ' +
+          'there be conceived any existing relationship or possible ' +
+          'connection between His Word and they that are created of it? ' +
+          'All the Prophets of God and their chosen Ones, all the ' +
+          'divines, the sages, and the wise of every generation, ' +
+          'unanimously recognize their inability to attain unto the ' +
+          'comprehension of that Quintessence of all truth, and confess ' +
+          'their incapacity to grasp Him, Who is the inmost Reality of ' +
+          'all things.',
+        author: "Bahá'u'lláh",
+        source: 'Kitáb-i-Íqán, pp. 98–99',
+      },
+      prompt:
+        'Read this slowly. What is Bahá’u’lláh saying is impossible for ' +
+        'human beings — and even for the Prophets — to do?',
+    },
+    {
+      type: 'understand',
+      title: 'Understand',
+      body:
+        'This passage points to what Bahá’ís call Háhút — the realm of ' +
+        "God's own unknowable Essence. It is described here as being " +
+        'beyond every category we have: beyond existence and ' +
+        'non-existence, beyond nearness and distance, beyond union and ' +
+        'separation. Notice the striking claim: not only ordinary ' +
+        'people, but "all the Prophets of God" and "the divines, the ' +
+        'sages, and the wise of every generation" all recognize their ' +
+        'own inability to comprehend it.\n\n' +
+        "This isn't a puzzle waiting to be solved by someone smarter or " +
+        'more devoted. It is a boundary built into the nature of reality ' +
+        "itself — God's Essence is not a hidden object we might " +
+        'eventually find, but something categorically beyond finding.',
+    },
+    {
+      type: 'explore',
+      title: 'An image for the unimaginable',
+      body:
+        "'Abdu'l-Bahá offered an image for this: imagine a single dot of " +
+        'ink on a blank page. Within that one dot, every letter and ' +
+        'every word that could ever be written already exists — in ' +
+        "potential. But look at the dot itself, and you can't see any " +
+        "of those letters. They aren't yet differentiated from one " +
+        'another, or from the dot.\n\n' +
+        "Bahá'ís understand God's names and attributes (Knowing, " +
+        'Loving, Just, Merciful, and so on) the same way in relation to ' +
+        'Háhút: all of them are contained in the divine Essence, but at ' +
+        'that level they are not yet distinguished from one another — ' +
+        'they are still just the dot.',
+      choice: {
+        question:
+          'Given both the Kitáb-i-Íqán passage and this image, what best ' +
+          'describes Háhút?',
+        options: [
+          'A place far away that we might one day reach with enough ' +
+            'spiritual effort.',
+          "A level of reality so different in kind that 'reaching' it " +
+            "isn't the right idea at all.",
+          'A metaphor with no real meaning, just poetic language.',
+          'The same as the physical world, just harder to see.',
+        ],
+        correctOption:
+          "A level of reality so different in kind that 'reaching' it " +
+          "isn't the right idea at all.",
+      },
+    },
+    {
+      type: 'reflect',
+      title: 'Reflect',
+      prompt:
+        'Most of the time we assume that with enough study, technology, ' +
+        'or spiritual practice, any mystery can eventually be solved or ' +
+        "reached. Sit with the idea that at least one thing — God's own " +
+        'Essence — is permanently, by design, beyond reach for every ' +
+        'created being, including the Prophets. What does it feel like ' +
+        "to accept a limit that isn't a failure, just the shape of " +
+        'reality? Write a few honest sentences.',
+    },
+    {
+      type: 'discuss',
+      title: 'Discuss',
+      prompt:
+        'If you’re studying this with others: Bahá’u’lláh says even the ' +
+        'Prophets "confess their incapacity to grasp Him, Who is the ' +
+        'inmost Reality of all things." Why might it matter that the ' +
+        'Prophets themselves acknowledge this limit, rather than ' +
+        'claiming special access to it?',
+    },
+    {
+      type: 'practice',
+      title: 'Live It',
+      body:
+        'Try this today: notice when you catch yourself assuming a ' +
+        'question always has a findable answer — about God, about ' +
+        'another person, about yourself. Practice saying, honestly, ' +
+        '"Some things aren\'t mine to fully grasp," without treating ' +
+        'that as defeat. Let it be rest instead of frustration.',
+    },
+    {
+      type: 'remember',
+      title: 'Remember',
+      blankedQuotation: {
+        textWithBlanks:
+          'God, the unknowable Essence, the divine Being, is immensely ' +
+          'exalted beyond every ______ attribute... All the Prophets of ' +
+          'God... unanimously recognize their ______ to attain unto the ' +
+          'comprehension of that Quintessence of all truth.',
+        answers: ['human', 'inability'],
+      },
+    },
+  ],
+};
+
 // What's next in this path (not yet written):
-// - Lesson 2 — The World of Háhút (the Unknowable Essence)
 // - Lesson 3 — The World of Láhút (the Primal Will / the Manifestations)
 // - Lesson 4 — The World of Jabarút (the Manifestations' distinct missions)
 // - Lesson 5 — The Worlds of Malakút & Násút (the soul and the physical world)
