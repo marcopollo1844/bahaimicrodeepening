@@ -1,7 +1,9 @@
 import {
   journeyOfTheSoulPath,
   worldsOfGodIntroLesson,
-  hahutUnknowableEssenceLesson,
+  hahutQuickLesson,
+  hahutExploreLesson,
+  hahutDeepDiveLesson,
 } from './paths/journeyOfTheSoul';
 import { Lesson, LearningPath } from './schema';
 
@@ -9,7 +11,9 @@ export const paths: LearningPath[] = [journeyOfTheSoulPath];
 
 export const lessons: Record<string, Lesson> = {
   [worldsOfGodIntroLesson.id]: worldsOfGodIntroLesson,
-  [hahutUnknowableEssenceLesson.id]: hahutUnknowableEssenceLesson,
+  [hahutQuickLesson.id]: hahutQuickLesson,
+  [hahutExploreLesson.id]: hahutExploreLesson,
+  [hahutDeepDiveLesson.id]: hahutDeepDiveLesson,
 };
 
 export function getPath(pathId: string): LearningPath | undefined {

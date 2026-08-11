@@ -24,7 +24,9 @@ export default function PathScreen({ route, navigation }: Props) {
           style={styles.card}
           onPress={() => navigation.navigate('Lesson', { lessonId: item.id })}
         >
-          <Text style={styles.lessonNumber}>Lesson {index + 1}</Text>
+          <Text style={styles.lessonNumber}>
+            {item.depthLabel ? item.depthLabel.toUpperCase() : `Lesson ${index + 1}`}
+          </Text>
           <Text style={styles.lessonTitle}>{item.title}</Text>
           <Text style={styles.lessonSubtitle}>{item.subtitle}</Text>
           <Text style={styles.lessonMeta}>{item.estimatedMinutes} min</Text>

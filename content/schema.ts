@@ -43,6 +43,8 @@ export interface Lesson {
   estimatedMinutes: number;
   keyIdea: string;
   steps: LessonStep[];
+  /** Label shown instead of "Lesson N" when this is a depth variant of another lesson's topic, e.g. "Quick" / "Explore" / "Deep Dive". */
+  depthLabel?: string;
 }
 
 export interface LearningPath {
