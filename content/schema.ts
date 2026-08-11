@@ -5,10 +5,16 @@ export type LessonStepType =
   | 'reflect'
   | 'discuss'
   | 'practice'
-  | 'remember';
+  | 'remember'
+  | 'explain';
 
 export interface Quotation {
   text: string;
+  author: string;
+  source: string;
+}
+
+export interface Citation {
   author: string;
   source: string;
 }
@@ -32,6 +38,10 @@ export interface LessonStep {
   prompt?: string;
   choice?: ChoicePrompt;
   blankedQuotation?: BlankedQuotation;
+  /** For 'explain' steps: a concise, source-grounded explanation revealed after the learner writes their own. */
+  modelAnswer?: string;
+  /** For 'explain' steps: attribution for modelAnswer, shown without repeating the full quotation text. */
+  citation?: Citation;
 }
 
 export interface Lesson {

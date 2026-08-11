@@ -128,6 +128,23 @@ export const worldsOfGodIntroLesson: Lesson = {
         answers: ['countless', 'infinite'],
       },
     },
+    {
+      type: 'explain',
+      title: 'Explain It',
+      prompt:
+        "You've got 30 seconds. How would you explain this idea to a " +
+        'friend?',
+      modelAnswer:
+        "Bahá'u'lláh teaches that this physical world is just one of " +
+        'countless worlds God has created — so many that only God can ' +
+        "fully grasp them. Our life here isn't the whole story; it's " +
+        'the beginning of a journey the soul keeps making toward God, ' +
+        'long after this life ends.',
+      citation: {
+        author: "Bahá'u'lláh",
+        source: "Tablets of Bahá'u'lláh, p. 187",
+      },
+    },
   ],
 };
 
@@ -372,6 +389,24 @@ const hahutRememberStep: Lesson['steps'][number] = {
   },
 };
 
+const hahutExplainStep: Lesson['steps'][number] = {
+  type: 'explain',
+  title: 'Explain It',
+  prompt:
+    "You've got 30 seconds. How would you explain this idea to a friend?",
+  modelAnswer:
+    "Bahá'u'lláh teaches that God's own Essence is so far beyond us " +
+    "that even the Prophets say they can't fully grasp it. That's " +
+    "not a gap waiting to be closed — it's simply how vast God is. " +
+    "'Abdu'l-Bahá compared it to a drop of ink that holds every word " +
+    'ever written, though you\'d never see a single letter just by ' +
+    'looking at the drop.',
+  citation: {
+    author: "Bahá'u'lláh",
+    source: 'Kitáb-i-Íqán, pp. 98–99',
+  },
+};
+
 const hahutKeyIdea =
   "God's own Essence is forever unknowable — not because we haven't " +
   'searched hard enough, but because it lies utterly beyond every ' +
@@ -394,6 +429,7 @@ export const hahutQuickLesson: Lesson = {
     hahutDiscussStepQuick,
     hahutLiveItStep,
     hahutRememberStep,
+    hahutExplainStep,
   ],
 };
 
@@ -415,6 +451,7 @@ export const hahutExploreLesson: Lesson = {
     hahutDiscussStepExpanded,
     hahutLiveItStep,
     hahutRememberStep,
+    hahutExplainStep,
   ],
 };
 
@@ -438,6 +475,7 @@ export const hahutDeepDiveLesson: Lesson = {
     hahutContemplationStep,
     hahutLiveItStep,
     hahutRememberStep,
+    hahutExplainStep,
   ],
 };
 
