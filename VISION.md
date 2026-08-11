@@ -62,14 +62,17 @@ Faith they weren't capable of having ten minutes earlier.
    *Discover → Encounter → Understand → Connect → Reflect → Practice →
    Share.*
 
-4. **The most distinctive feature, not yet built: "Explain it."** Every
-   lesson should end with the learner typing or speaking a 30-second
-   explanation in their own words, which the app compares to a
-   source-grounded model answer and can turn into a shareable card. This is
-   what turns the app from *content delivery* into *teaching people to
-   teach* — the single most differentiating idea in the product research,
-   and currently missing from every lesson (they end at "Remember," a
-   recall check, not a teach-back).
+4. **The most distinctive feature: "Explain it."** Every lesson should end
+   with the learner typing (or, eventually, speaking) a 30-second
+   explanation in their own words, then revealing a source-grounded model
+   answer they can share. This is what turns the app from *content
+   delivery* into *teaching people to teach* — the single most
+   differentiating idea in the product research. Built as the `explain`
+   step type in `content/schema.ts` (see `ExplainBlock` in
+   `screens/LessonScreen.tsx`); every lesson now ends here, after
+   "Remember." Not yet built: actual comparison/feedback on what the
+   learner wrote (currently self-assessed by reading the model answer) and
+   voice input.
 
 5. **Content organization avoids feeling like a digital library.** Group by
    relatable human categories (Big Questions, Humanity & Unity, God & the
@@ -81,9 +84,11 @@ Faith they weren't capable of having ten minutes earlier.
 ## Where the current build stands against this
 
 Aligned: the Path → Lesson → step-flow architecture, verbatim-cited
-quotations via the `Quotation` type, and the Quick/Explore/Deep Dive split
-(first applied to the Háhút lesson).
+quotations via the `Quotation` type, the Quick/Explore/Deep Dive split
+(first applied to the Háhút lesson), and the "Explain it" teach-back step
+(principle 4), now present at the end of every lesson.
 
-Gap: no lesson yet ends with a genuine "explain it in your own words" step
-(principle 4 above). That's the next meaningful upgrade to the lesson
-*format* itself, independent of writing more lesson content.
+Gap: the home screen is still a flat list of paths (currently just one:
+"Fireside: Journey of the Soul"). Principle 5's category-based "What would
+you like to explore?" home screen is worth building once there's a second
+path to justify it — a single path doesn't yet need re-organizing.
