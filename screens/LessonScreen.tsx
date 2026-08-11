@@ -1,8 +1,18 @@
 import React, { Fragment, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+  Platform,
+  Pressable,
+  ScrollView,
+  Share,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {
   BlankedQuotation,
+  Citation,
   ChoicePrompt,
   LessonStep,
   Quotation,
@@ -93,7 +103,11 @@ export default function LessonScreen({ route, navigation }: Props) {
       <Text style={styles.eyebrow}>{lesson.subtitle}</Text>
       <Text style={styles.title}>{lesson.title}</Text>
 
-      <StepContent key={step.title + stepIndex} step={step} />
+      <StepContent
+        key={step.title + stepIndex}
+        step={step}
+        lessonTitle={lesson.title}
+      />
 
       <View style={styles.navRow}>
         {stepIndex > 0 && (
@@ -111,7 +125,13 @@ export default function LessonScreen({ route, navigation }: Props) {
   );
 }
 
-function StepContent({ step }: { step: LessonStep }) {
+function StepContent({
+  step,
+  lessonTitle,
+}: {
+  step: LessonStep;
+  lessonTitle: string;
+}) {
   return (
     <View style={styles.stepCard}>
       <Text style={styles.stepLabel}>{step.title}</Text>
@@ -122,6 +142,13 @@ function StepContent({ step }: { step: LessonStep }) {
       {step.choice && <ChoiceBlock choice={step.choice} />}
       {step.blankedQuotation && (
         <BlankedQuotationBlock blanked={step.blankedQuotation} />
+      )}
+      {step.type === 'explain' && (
+        <ExplainBlock
+          modelAnswer={step.modelAnswer}
+          citation={step.citation}
+          lessonTitle={lessonTitle}
+        />
       )}
     </View>
   );
@@ -242,6 +269,95 @@ function BlankedQuotationBlock({ blanked }: { blanked: BlankedQuotation }) {
             ? 'Correct!'
             : `Answer: ${blanked.answers.join(' — ')}`}
         </Text>
+      )}
+    </View>
+  );
+}
+
+async function shareMessage(message: string): Promise<'shared' | 'copied' | 'unavailable'> {
+  if (Platform.OS === 'web') {
+    const nav: any = typeof navigator !== 'undefined' ? navigator : undefined;
+    if (nav?.share) {
+      try {
+        await nav.share({ text: message });
+        return 'shared';
+      } catch {
+        // user cancelled or unsupported — fall through to clipboard
+      }
+    }
+    if (nav?.clipboard?.writeText) {
+      await nav.clipboard.writeText(message);
+      return 'copied';
+    }
+    return 'unavailable';
+  }
+  try {
+    await Share.share({ message });
+    return 'shared';
+  } catch {
+    return 'unavailable';
+  }
+}
+
+function ExplainBlock({
+  modelAnswer,
+  citation,
+  lessonTitle,
+}: {
+  modelAnswer?: string;
+  citation?: Citation;
+  lessonTitle: string;
+}) {
+  const [yourWords, setYourWords] = useState('');
+  const [revealed, setRevealed] = useState(false);
+  const [shareStatus, setShareStatus] = useState<string | null>(null);
+
+  const onShare = async () => {
+    if (!modelAnswer) return;
+    const citationLine = citation ? `\n\n— ${citation.author}, ${citation.source}` : '';
+    const message = `${lessonTitle}\n\n${modelAnswer}${citationLine}`;
+    const result = await shareMessage(message);
+    setShareStatus(
+      result === 'copied'
+        ? 'Copied to clipboard!'
+        : result === 'unavailable'
+          ? 'Sharing isn’t available on this device.'
+          : null
+    );
+  };
+
+  return (
+    <View>
+      <TextInput
+        style={styles.journalInput}
+        value={yourWords}
+        onChangeText={setYourWords}
+        placeholder="Type your explanation here…"
+        placeholderTextColor="#999"
+        multiline
+      />
+      <Text style={styles.journalHint}>
+        This stays on your device — it's for you, not graded or sent anywhere.
+      </Text>
+      {!revealed && (
+        <Pressable style={styles.secondaryButtonFull} onPress={() => setRevealed(true)}>
+          <Text style={styles.secondaryButtonText}>See a model explanation</Text>
+        </Pressable>
+      )}
+      {revealed && modelAnswer && (
+        <View style={styles.keyIdeaCard}>
+          <Text style={styles.keyIdeaLabel}>Your 30-second explanation</Text>
+          <Text style={styles.keyIdeaText}>{modelAnswer}</Text>
+          {citation && (
+            <Text style={styles.modelAnswerSource}>
+              — {citation.author}, {citation.source}
+            </Text>
+          )}
+          <Pressable style={[styles.primaryButton, styles.shareButton]} onPress={onShare}>
+            <Text style={styles.primaryButtonText}>Share this idea</Text>
+          </Pressable>
+          {shareStatus && <Text style={styles.feedback}>{shareStatus}</Text>}
+        </View>
       )}
     </View>
   );
@@ -435,5 +551,14 @@ const styles = StyleSheet.create({
     fontSize: 17,
     lineHeight: 24,
     color: '#3a2e00',
+  },
+  modelAnswerSource: {
+    marginTop: 8,
+    fontSize: 13,
+    color: '#7a5c00',
+  },
+  shareButton: {
+    marginTop: 14,
+    marginBottom: 0,
   },
 });
