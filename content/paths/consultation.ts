@@ -2,6 +2,7 @@ import { Lesson, LearningPath } from '../schema';
 
 export const consultationPath: LearningPath = {
   id: 'consultation',
+  categoryId: 'community',
   title: 'Fireside: Consultation',
   description:
     "An introduction to Bahá'u'lláh's teaching on consultation — the " +

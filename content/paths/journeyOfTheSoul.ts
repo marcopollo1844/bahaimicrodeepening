@@ -2,6 +2,7 @@ import { Lesson, LearningPath } from '../schema';
 
 export const journeyOfTheSoulPath: LearningPath = {
   id: 'journey-of-the-soul',
+  categoryId: 'god-and-soul',
   title: 'Fireside: Journey of the Soul',
   description:
     "An introduction to Bahá'u'lláh's teaching on the Worlds of God — the " +

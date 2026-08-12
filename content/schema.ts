@@ -62,4 +62,5 @@ export interface LearningPath {
   title: string;
   description: string;
   lessonIds: string[];
+  categoryId: string;
 }
