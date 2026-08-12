@@ -138,7 +138,6 @@ function StepContent({
       {step.quotation && <QuotationBlock quotation={step.quotation} />}
       {step.body && <Text style={styles.body}>{step.body}</Text>}
       {step.prompt && <Text style={styles.prompt}>{step.prompt}</Text>}
-      {step.type === 'reflect' && <JournalInput />}
       {step.choice && <ChoiceBlock choice={step.choice} />}
       {step.blankedQuotation && (
         <BlankedQuotationBlock blanked={step.blankedQuotation} />
@@ -160,25 +159,6 @@ function QuotationBlock({ quotation }: { quotation: Quotation }) {
       <Text style={styles.quoteText}>“{quotation.text}”</Text>
       <Text style={styles.quoteSource}>
         — {quotation.author}, {quotation.source}
-      </Text>
-    </View>
-  );
-}
-
-function JournalInput() {
-  const [text, setText] = useState('');
-  return (
-    <View>
-      <TextInput
-        style={styles.journalInput}
-        value={text}
-        onChangeText={setText}
-        placeholder="Write a few honest sentences… (private, not shared)"
-        placeholderTextColor="#999"
-        multiline
-      />
-      <Text style={styles.journalHint}>
-        This stays on your device unless you choose to share it.
       </Text>
     </View>
   );
