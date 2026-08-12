@@ -5,15 +5,54 @@ import {
   hahutExploreLesson,
   hahutDeepDiveLesson,
 } from './paths/journeyOfTheSoul';
+import {
+  consultationPath,
+  searchForTruthQuickLesson,
+  searchForTruthExploreLesson,
+  searchForTruthDeepDiveLesson,
+  unityCooperationQuickLesson,
+  unityCooperationExploreLesson,
+  unityCooperationDeepDiveLesson,
+  detachmentQuickLesson,
+  detachmentExploreLesson,
+  detachmentDeepDiveLesson,
+  equalityOfVoicesQuickLesson,
+  equalityOfVoicesExploreLesson,
+  equalityOfVoicesDeepDiveLesson,
+  courtesyRespectQuickLesson,
+  courtesyRespectExploreLesson,
+  courtesyRespectDeepDiveLesson,
+  collectiveDecisionQuickLesson,
+  collectiveDecisionExploreLesson,
+  collectiveDecisionDeepDiveLesson,
+} from './paths/consultation';
 import { Lesson, LearningPath } from './schema';
 
-export const paths: LearningPath[] = [journeyOfTheSoulPath];
+export const paths: LearningPath[] = [journeyOfTheSoulPath, consultationPath];
 
 export const lessons: Record<string, Lesson> = {
   [worldsOfGodIntroLesson.id]: worldsOfGodIntroLesson,
   [hahutQuickLesson.id]: hahutQuickLesson,
   [hahutExploreLesson.id]: hahutExploreLesson,
   [hahutDeepDiveLesson.id]: hahutDeepDiveLesson,
+  [searchForTruthQuickLesson.id]: searchForTruthQuickLesson,
+  [searchForTruthExploreLesson.id]: searchForTruthExploreLesson,
+  [searchForTruthDeepDiveLesson.id]: searchForTruthDeepDiveLesson,
+  [unityCooperationQuickLesson.id]: unityCooperationQuickLesson,
+  [unityCooperationExploreLesson.id]: unityCooperationExploreLesson,
+  [unityCooperationDeepDiveLesson.id]: unityCooperationDeepDiveLesson,
+  [detachmentQuickLesson.id]: detachmentQuickLesson,
+  [detachmentExploreLesson.id]: detachmentExploreLesson,
+  [detachmentDeepDiveLesson.id]: detachmentDeepDiveLesson,
+  [equalityOfVoicesQuickLesson.id]: equalityOfVoicesQuickLesson,
+  [equalityOfVoicesExploreLesson.id]: equalityOfVoicesExploreLesson,
+  [equalityOfVoicesDeepDiveLesson.id]: equalityOfVoicesDeepDiveLesson,
+  [courtesyRespectQuickLesson.id]: courtesyRespectQuickLesson,
+  [courtesyRespectExploreLesson.id]: courtesyRespectExploreLesson,
+  [courtesyRespectDeepDiveLesson.id]: courtesyRespectDeepDiveLesson,
+  [collectiveDecisionQuickLesson.id]: collectiveDecisionQuickLesson,
+  [collectiveDecisionExploreLesson.id]: collectiveDecisionExploreLesson,
+  [collectiveDecisionDeepDiveLesson.id]: collectiveDecisionDeepDiveLesson,
 };
 
 export function getPath(pathId: string): LearningPath | undefined {
