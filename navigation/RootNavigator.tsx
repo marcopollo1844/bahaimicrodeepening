@@ -1,11 +1,13 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
+import CategoryScreen from '../screens/CategoryScreen';
 import PathScreen from '../screens/PathScreen';
 import LessonScreen from '../screens/LessonScreen';
-import { getLesson, getPath } from '../content';
+import { getCategory, getLesson, getPath } from '../content';
 
 export type RootStackParamList = {
   Home: undefined;
+  Category: { categoryId: string };
   Path: { pathId: string };
   Lesson: { lessonId: string };
 };
@@ -19,6 +21,13 @@ export default function RootNavigator() {
         name="Home"
         component={HomeScreen}
         options={{ title: "Bahá'í Micro-Deepening" }}
+      />
+      <Stack.Screen
+        name="Category"
+        component={CategoryScreen}
+        options={({ route }) => ({
+          title: getCategory(route.params.categoryId)?.title ?? 'Explore',
+        })}
       />
       <Stack.Screen
         name="Path"

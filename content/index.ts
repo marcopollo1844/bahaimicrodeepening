@@ -27,6 +27,10 @@ import {
   collectiveDecisionDeepDiveLesson,
 } from './paths/consultation';
 import { Lesson, LearningPath } from './schema';
+import { categories, Category } from './categories';
+
+export { categories };
+export type { Category };
 
 export const paths: LearningPath[] = [journeyOfTheSoulPath, consultationPath];
 
@@ -80,4 +84,18 @@ export function getNextLessonId(
   const index = path.lessonIds.indexOf(currentLessonId);
   if (index === -1) return undefined;
   return path.lessonIds[index + 1];
+}
+
+export function getCategory(categoryId: string): Category | undefined {
+  return categories.find((category) => category.id === categoryId);
+}
+
+export function getPathsForCategory(categoryId: string): LearningPath[] {
+  return paths.filter((path) => path.categoryId === categoryId);
+}
+
+export function getCategoriesWithPaths(): Category[] {
+  return categories.filter(
+    (category) => getPathsForCategory(category.id).length > 0
+  );
 }
