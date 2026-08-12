@@ -88,7 +88,8 @@ quotations via the `Quotation` type, the Quick/Explore/Deep Dive split
 (first applied to the Háhút lesson), and the "Explain it" teach-back step
 (principle 4), now present at the end of every lesson.
 
-Gap: the home screen is still a flat list of paths (currently just one:
-"Fireside: Journey of the Soul"). Principle 5's category-based "What would
-you like to explore?" home screen is worth building once there's a second
-path to justify it — a single path doesn't yet need re-organizing.
+Gap: the home screen is still a flat list of paths. There are now two —
+"Fireside: Journey of the Soul" and "Fireside: Consultation" (22 lessons
+total) — so principle 5's category-based "What would you like to explore?"
+home screen is no longer a someday-nice-to-have; it's overdue. This is the
+next build worth prioritizing.
