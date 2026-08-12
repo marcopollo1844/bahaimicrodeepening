@@ -77,19 +77,26 @@ Faith they weren't capable of having ten minutes earlier.
 5. **Content organization avoids feeling like a digital library.** Group by
    relatable human categories (Big Questions, Humanity & Unity, God & the
    Soul, Love & Relationships, Justice & Society, Spiritual Life, Stories,
-   Community, Society), not by book title. As more paths are added, the
-   home screen should move toward "What would you like to explore?"
-   category cards rather than a flat list of paths.
+   Community, Society), not by book title. Built as `content/categories.ts`
+   plus a required `categoryId` on each `LearningPath`; `HomeScreen` shows
+   "What would you like to explore?" category cards (only categories with
+   at least one path render, so the taxonomy can grow ahead of content).
+   When a category has exactly one path, tapping it jumps straight to that
+   path's lesson list — `CategoryScreen` (an intermediate list of paths
+   within a category) only comes into play once a category has more than
+   one, which isn't true yet for either existing category.
 
 ## Where the current build stands against this
 
 Aligned: the Path → Lesson → step-flow architecture, verbatim-cited
 quotations via the `Quotation` type, the Quick/Explore/Deep Dive split
-(first applied to the Háhút lesson), and the "Explain it" teach-back step
-(principle 4), now present at the end of every lesson.
+(first applied to the Háhút lesson), the "Explain it" teach-back step
+(principle 4) present at the end of every lesson, and the category-based
+home screen (principle 5).
 
-Gap: the home screen is still a flat list of paths. There are now two —
-"Fireside: Journey of the Soul" and "Fireside: Consultation" (22 lessons
-total) — so principle 5's category-based "What would you like to explore?"
-home screen is no longer a someday-nice-to-have; it's overdue. This is the
-next build worth prioritizing.
+Gap: none currently tracked. Two paths exist — "Fireside: Journey of the
+Soul" (God & the Soul) and "Fireside: Consultation" (Community) — each
+still the only path in its category, so `CategoryScreen`'s multi-path
+listing view is written but not yet exercised by real content. Worth
+revisiting once a third path lands in an existing category, or a path
+gets added to a category that doesn't have one yet.
