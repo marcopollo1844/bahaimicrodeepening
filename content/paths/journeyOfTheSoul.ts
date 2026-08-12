@@ -101,14 +101,6 @@ export const worldsOfGodIntroLesson: Lesson = {
         'Write a few honest sentences.',
     },
     {
-      type: 'discuss',
-      title: 'Discuss',
-      prompt:
-        'If you’re studying this with others: Bahá’u’lláh says ' +
-        '"none can reckon or comprehend" the other worlds of God except ' +
-        'Him. Does that not-knowing unsettle you, or free you? Why?',
-    },
-    {
       type: 'practice',
       title: 'Live It',
       body:
@@ -144,6 +136,14 @@ export const worldsOfGodIntroLesson: Lesson = {
         author: "Bahá'u'lláh",
         source: "Tablets of Bahá'u'lláh, p. 187",
       },
+    },
+    {
+      type: 'discuss',
+      title: 'Discuss (Optional)',
+      prompt:
+        'If you’re studying this with others: Bahá’u’lláh says ' +
+        '"none can reckon or comprehend" the other worlds of God except ' +
+        'Him. Does that not-knowing unsettle you, or free you? Why?',
     },
   ],
 };
@@ -330,7 +330,7 @@ const hahutReflectStepExpanded: Lesson['steps'][number] = {
 
 const hahutDiscussStepQuick: Lesson['steps'][number] = {
   type: 'discuss',
-  title: 'Discuss',
+  title: 'Discuss (Optional)',
   prompt:
     'If you’re studying this with others: Bahá’u’lláh says even the ' +
     'Prophets "confess their incapacity to grasp Him, Who is the ' +
@@ -341,7 +341,7 @@ const hahutDiscussStepQuick: Lesson['steps'][number] = {
 
 const hahutDiscussStepExpanded: Lesson['steps'][number] = {
   type: 'discuss',
-  title: 'Discuss',
+  title: 'Discuss (Optional)',
   prompt:
     hahutDiscussStepQuick.prompt +
     '\n\nA second question for the group: if the Prophets themselves ' +
@@ -426,10 +426,10 @@ export const hahutQuickLesson: Lesson = {
     hahutUnderstandStepQuick,
     hahutExploreStep,
     hahutReflectStepQuick,
-    hahutDiscussStepQuick,
     hahutLiveItStep,
     hahutRememberStep,
     hahutExplainStep,
+    hahutDiscussStepQuick,
   ],
 };
 
@@ -448,10 +448,10 @@ export const hahutExploreLesson: Lesson = {
     hahutCrossReferenceStep,
     hahutExploreStep,
     hahutReflectStepExpanded,
-    hahutDiscussStepExpanded,
     hahutLiveItStep,
     hahutRememberStep,
     hahutExplainStep,
+    hahutDiscussStepExpanded,
   ],
 };
 
@@ -471,11 +471,11 @@ export const hahutDeepDiveLesson: Lesson = {
     hahutExploreStep,
     hahutGraciousGodStep,
     hahutReflectStepExpanded,
-    hahutDiscussStepExpanded,
     hahutContemplationStep,
     hahutLiveItStep,
     hahutRememberStep,
     hahutExplainStep,
+    hahutDiscussStepExpanded,
   ],
 };
 
